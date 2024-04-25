@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="No se encuentra la pagina que busca">
+  <section
+    class="m-auto flex h-screen w-full flex-wrap place-items-center items-center justify-center"
+  >
+    <div class="space-y-6 text-center">
+      <h1 class="text-6xl font-medium">Error 404</h1>
+      <h2 class="text-2xl font-medium">PÁGINA NO ENCONTRADA</h2>
+      <p class="max-w-80 text-xl">
+        ¡Hola! Lo sentimos, pero no pudimos encontrar lo que buscabas. Verifica
+        que la dirección URL sea correcta.
+      </p>
+      <a href="/">
+        <button
+          type="button"
+          class="mt-4 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+          >Volver al inicio</button
+        >
+      </a>
+    </div>
+  </section>
+</Layout>
