@@ -1,8 +1,8 @@
 # Logistics template made astro, apexcharts based on flowbite
 
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/G-Reynaga/Dashboard-)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/G-Reynaga/Dashboard-)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/G-Reynaga/Template-Dashboard)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/G-Reynaga/Template-Dashboard)
 
 ![imagen-plantilla](https://github.com/G-Reynaga/Dashboard-/assets/98990484/643fefa5-946a-42e0-98a4-82aaa25193e4)
 
