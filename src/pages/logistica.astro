@@ -1,0 +1,242 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Container from "@/components/Container.astro";
+import Section from "@/components/Section.astro";
+import AddIcon from "@/icons/Add.astro";
+import MotobikerIcon from "@/icons/Motobiker.astro";
+---
+
+<Layout title="Empresa | Logistica">
+  <Container>
+    <Section class="flex-col">
+      <div class="flex h-screen">
+        <div class="w-80 bg-slate-100 dark:bg-gray-800 p-5">
+          <div class="flex space-x-2 mb-5">
+            <h1
+              class="text-2xl font-semibold text-zinc-900 dark:text-white mb-2"
+            >
+              Flota
+            </h1>
+          </div>
+          <button
+            class="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded-lg flex justify-center items-center mb-4"
+          >
+            <AddIcon class="mr-2" />
+            Añadir vehiculo
+          </button>
+
+          <div>
+            <ul>
+              <li>
+                <button
+                  type="button"
+                  class="w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-gray-200"
+                  aria-expanded="false"
+                  aria-controls="dropdown-logistica"
+                  data-collapse-toggle="dropdown-logistica"
+                >
+                  <span class="sr-only">Open</span>
+                  <div class="flex justify-start gap-3 items-center">
+                    <div class="dark:bg-white bg-gray-500 rounded-full p-2">
+                      <MotobikerIcon
+                        class="dark:text-gray-600 text-white size-6"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <h2
+                        class="text-lg font-semibold text-zinc-900 dark:text-white"
+                      >
+                        VEH-002
+                      </h2>
+                      <p class="text-xs text-zinc-600 dark:text-zinc-300">
+                        Seedspace, Miraflores, Perú
+                      </p>
+                    </div>
+                  </div>
+                </button>
+                <ul
+                  id="dropdown-logistica"
+                  class="hidden space-y-2 py-2 transition-transform origin-top transform-gpu scale-95 group-hover:scale-100"
+                >
+                  <p class="text-xs text-green-500">Temperature (good)</p>
+                  <div class="flex items-center gap-2">
+                    <div
+                      class="w-full bg-gray-200 rounded-full h-1 dark:bg-gray-700"
+                    >
+                      <div
+                        class="bg-blue-600 h-1 rounded-full"
+                        style="width: 45%"
+                      >
+                      </div>
+                    </div>
+                    <p class="text-zinc-900 dark:text-white">6°C</p>
+                  </div>
+
+                  <ol
+                    class="relative border-s border-gray-200 dark:border-gray-700"
+                  >
+                    <li class="mb-10 ms-4">
+                      <div
+                        class="absolute w-3 h-3 bg-blue-700 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900"
+                      >
+                      </div>
+                      <time
+                        class="mb-1 text-md font-normal leading-none dark:text-gray-200 text-gray-900"
+                        >Arrived</time
+                      >
+                      <h3
+                        class="text-xs font-semibold text-gray-400 dark:text-gray-500"
+                      >
+                        Apr 26, 2024 5:13 PM
+                      </h3>
+                    </li>
+                    <li class="mb-10 ms-4">
+                      <div
+                        class="absolute w-3 h-3 bg-blue-700 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900"
+                      >
+                      </div>
+                      <time
+                        class="mb-1 text-md font-normal leading-none dark:text-gray-200 text-gray-900"
+                        >Out for delivery</time
+                      >
+                      <h3
+                        class="text-xs font-semibold text-gray-400 dark:text-gray-500"
+                      >
+                        Apr 26, 2024 4:48 PM
+                      </h3>
+                    </li>
+                    <li class="mb-10 ms-4">
+                      <div
+                        class="absolute w-3 h-3 bg-blue-700 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900"
+                      >
+                      </div>
+                      <time
+                        class="mb-1 text-md font-normal leading-none dark:text-gray-200 text-gray-900"
+                        >Tracking number created</time
+                      >
+                      <h3
+                        class="text-xs font-semibold text-gray-400 dark:text-gray-500"
+                      >
+                        Apr 26, 2024 3:01 PM
+                      </h3>
+                    </li>
+                  </ol>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <ul>
+              <li>
+                <button
+                  type="button"
+                  class="w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:hover:bg-gray-700 dark:text-gray-200"
+                  aria-expanded="false"
+                  aria-controls="dropdown-logistica-2"
+                  data-collapse-toggle="dropdown-logistica-2"
+                >
+                  <span class="sr-only">Open</span>
+                  <div class="flex justify-start gap-3 items-center">
+                    <div class="dark:bg-white bg-gray-500 rounded-full p-2">
+                      <MotobikerIcon
+                        class="dark:text-gray-600 text-white size-6"
+                      />
+                    </div>
+                    <div class="text-start">
+                      <h2
+                        class="text-lg font-semibold text-zinc-900 dark:text-white"
+                      >
+                        VEH-001
+                      </h2>
+                      <p class="text-xs text-zinc-600 dark:text-zinc-300">
+                        Seedspace, Surco, Perú
+                      </p>
+                    </div>
+                  </div>
+                </button>
+                <ul
+                  id="dropdown-logistica-2"
+                  class="hidden space-y-2 py-2 transition-transform origin-top duration-300 transform-gpu scale-95 group-hover:scale-100"
+                >
+                  <p class="text-xs text-green-500">Temperature (good)</p>
+                  <div class="flex items-center gap-2">
+                    <div
+                      class="w-full bg-gray-200 rounded-full h-1 dark:bg-gray-700"
+                    >
+                      <div
+                        class="bg-blue-600 h-1 rounded-full"
+                        style="width: 45%"
+                      >
+                      </div>
+                    </div>
+                    <p class="text-zinc-900 dark:text-white">6°C</p>
+                  </div>
+
+                  <ol
+                    class="relative border-s border-gray-200 dark:border-gray-700"
+                  >
+                    <li class="mb-10 ms-4">
+                      <div
+                        class="absolute w-3 h-3 bg-blue-700 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900"
+                      >
+                      </div>
+                      <time
+                        class="mb-1 text-md font-normal leading-none dark:text-gray-200 text-gray-900"
+                        >Arrived</time
+                      >
+                      <h3
+                        class="text-xs font-semibold text-gray-400 dark:text-gray-500"
+                      >
+                        Apr 26, 2024 5:13 PM
+                      </h3>
+                    </li>
+                    <li class="mb-10 ms-4">
+                      <div
+                        class="absolute w-3 h-3 bg-blue-700 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900"
+                      >
+                      </div>
+                      <time
+                        class="mb-1 text-md font-normal leading-none dark:text-gray-200 text-gray-900"
+                        >Out for delivery</time
+                      >
+                      <h3
+                        class="text-xs font-semibold text-gray-400 dark:text-gray-500"
+                      >
+                        Apr 26, 2024 4:48 PM
+                      </h3>
+                    </li>
+                    <li class="mb-10 ms-4">
+                      <div
+                        class="absolute w-3 h-3 bg-blue-700 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900"
+                      >
+                      </div>
+                      <time
+                        class="mb-1 text-md font-normal leading-none dark:text-gray-200 text-gray-900"
+                        >Tracking number created</time
+                      >
+                      <h3
+                        class="text-xs font-semibold text-gray-400 dark:text-gray-500"
+                      >
+                        Apr 26, 2024 3:01 PM
+                      </h3>
+                    </li>
+                  </ol>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex-grow relative">
+          <div class="absolute inset-0">
+            <img
+              src="https://placehold.co/1600x900.png?text=Map+Placeholder"
+              alt="Map"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </Section>
+  </Container>
+</Layout>

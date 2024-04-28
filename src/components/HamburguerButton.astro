@@ -1,0 +1,15 @@
+---
+import HamburguesaIcon from "@/icons/Hamburguesa.astro";
+import CloseIcon from "@/icons/Close.astro";
+---
+
+<button
+  id="toggleSidebarMobile"
+  aria-expanded="true"
+  aria-controls="sidebar"
+  class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+>
+  <span class="sr-only">Open sidebar</span>
+  <HamburguesaIcon id="toggleSidebarMobileHamburger" />
+  <CloseIcon id="toggleSidebarMobileClose" class="hidden w-6 h-6" />
+</button>

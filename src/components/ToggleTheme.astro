@@ -1,24 +1,25 @@
 ---
-import Moon from "../icons/Moon.astro";
-import Sun from "../icons/Sun.astro";
+import Moon from "@/icons/Moon.astro";
+import Sun from "@/icons/Sun.astro";
 ---
 
 <button
   id="theme-toggle"
   data-tooltip-target="tooltip-toggle"
   type="button"
-  class="text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg text-sm p-2.5"
+  class="hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg text-sm p-2.5"
 >
-  <Moon id="theme-toggle-dark-icon" class="hidden w-5 h-5" />
+  <Moon id="theme-toggle-dark-icon" class="hidden size-6 text-blue-300 " />
 
-  <Sun id="theme-toggle-light-icon" class="hidden w-5 h-5" />
+  <Sun id="theme-toggle-light-icon" class="hidden size-6 text-yellow-300" />
 </button>
+
 <div
   id="tooltip-toggle"
   role="tooltip"
-  class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip"
+  class="absolute z-10 invisible inline-block px-3 py-2 text-xs font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip"
 >
-  Toggle dark mode
+  Oscuro / Claro
   <div class="tooltip-arrow" data-popper-arrow></div>
 </div>
 
@@ -36,9 +37,9 @@ import Sun from "../icons/Sun.astro";
       (!("color-theme" in localStorage) &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
-      themeToggleLightIcon?.classList.remove("hidden");
-    } else {
       themeToggleDarkIcon?.classList.remove("hidden");
+    } else {
+      themeToggleLightIcon?.classList.remove("hidden");
     }
 
     const themeToggleBtn = document.getElementById("theme-toggle");

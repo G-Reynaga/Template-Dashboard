@@ -1,379 +1,527 @@
 ---
-import Container from "../components/Container.astro";
-import Section from "../components/Section.astro";
-import Layout from "../layouts/Layout.astro";
+import Container from "@/components/Container.astro";
+import Section from "@/components/Section.astro";
+import Layout from "@/layouts/Layout.astro";
 ---
 
-<Layout title="Cobox | Dashboard">
+<Layout title="Empresa | Dashboard">
   <Container>
-    <Section class="flex-col">
-      <div class="grid lg:grid-cols-4 justify-center gap-2">
-        <div
-          class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-        >
-          <h5
-            class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white"
-          >
-            Total de pedidos atendidos
-          </h5>
-          <p class="font-normal text-gray-700 dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
-          </p>
-        </div>
-        <div
-          class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-        >
-          <h5
-            class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white"
-          >
-            Ahorros
-          </h5>
-          <p class="font-normal text-gray-700 dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
-          </p>
-        </div>
-        <div
-          class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-        >
-          <h5
-            class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white"
-          >
-            Cantidad de emisiones de CO2 ahorrados
-          </h5>
-          <p class="font-normal text-gray-700 dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
-          </p>
-        </div>
-
-        <div
-          class="block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
-        >
-          <h5
-            class="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white"
-          >
-            Saldo pendientes
-          </h5>
-          <p class="font-normal text-gray-700 dark:text-gray-400">
-            Here are the biggest enterprise technology acquisitions of 2021 so
-            far, in reverse chronological order.
-          </p>
-        </div>
+    <Section class="flex-col p-4">
+      <div class="grid sm:grid-cols-4 justify-center gap-2">
+        
       </div>
 
-      <div class="grid md:grid-cols-2 gap-2 mt-2">
+      <!-- Chart Linear -->
+      <div class="grid sm:grid-cols-2 gap-4">
         <div
-          class="w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6"
+          class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800"
         >
-          <div class="flex justify-between">
-            <div>
-              <h5
-                class="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2"
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex-shrink-0">
+              <span
+                class="text-xl font-bold leading-none text-gray-900 sm:text-2xl dark:text-white"
+                >$45,385</span
               >
-                32.4k
-              </h5>
-              <p class="text-base font-normal text-gray-500 dark:text-gray-400">
-                Users this week
-              </p>
+              <h3 class="text-base font-light text-gray-500 dark:text-gray-400">
+                Sales this week
+              </h3>
             </div>
             <div
-              class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 dark:text-green-500 text-center"
+              class="flex items-center justify-end flex-1 text-base font-medium text-green-500 dark:text-green-400"
             >
-              12%
+              12.5%
               <svg
-                class="w-3 h-3 ms-1"
-                aria-hidden="true"
+                class="w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 10 14"
               >
                 <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 13V1m0 0L1 5m4-4 4 4"></path>
+                  fill-rule="evenodd"
+                  d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
+                  clip-rule="evenodd"></path>
               </svg>
             </div>
           </div>
-          <div id="area-chart"></div>
+
+          <div id="main-chart"></div>
+
           <div
-            class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between"
+            class="flex items-center justify-between pt-3 mt-4 border-t border-gray-200 sm:pt-6 dark:border-gray-700"
           >
-            <div class="flex justify-between items-center pt-5">
-              <!-- Button -->
+            <div>
               <button
-                id="dropdownDefaultButton"
-                data-dropdown-toggle="lastDaysdropdown"
-                data-dropdown-placement="bottom"
-                class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 text-center inline-flex items-center dark:hover:text-white"
+                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                 type="button"
-              >
-                Last 7 days
-                <svg
-                  class="w-2.5 m-2.5 ms-1.5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
+                data-dropdown-toggle="weekly-sales-dropdown"
+                >Last 7 days <svg
+                  class="w-4 h-4 ml-2"
                   fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  ><path
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="m1 1 4 4 4-4"></path>
-                </svg>
-              </button>
-              <!-- Dropdown menu -->
-              <div
-                id="lastDaysdropdown"
-                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                    d="M19 9l-7 7-7-7"></path></svg
+                ></button
               >
-                <ul
-                  class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                  aria-labelledby="dropdownDefaultButton"
-                >
+
+              <div
+                class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+                id="weekly-sales-dropdown"
+              >
+                <div class="px-4 py-3" role="none">
+                  <p
+                    class="text-sm font-medium text-gray-900 truncate dark:text-white"
+                    role="none"
+                  >
+                    Sep 16, 2021 - Sep 22, 2021
+                  </p>
+                </div>
+                <ul class="py-1" role="none">
                   <li>
                     <a
                       href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Yesterday</a
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">Yesterday</a
                     >
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Today</a
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">Today</a
                     >
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Last 7 days</a
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">Last 7 days</a
                     >
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Last 30 days</a
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">Last 30 days</a
                     >
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Last 90 days</a
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">Last 90 days</a
                     >
                   </li>
                 </ul>
+                <div class="py-1" role="none">
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                    role="menuitem">Custom...</a
+                  >
+                </div>
               </div>
+            </div>
+            <div class="flex-shrink-0">
               <a
                 href="#"
-                class="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3 py-2"
+                class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
               >
-                Users Report
+                Sales Report
                 <svg
-                  class="w-2.5 h-2.5 ms-1.5 rtl:rotate-180"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-4 h-4 ml-1"
                   fill="none"
-                  viewBox="0 0 6 10"
-                >
-                  <path
-                    stroke="currentColor"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  ><path
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="m1 9 4-4-4-4"></path>
-                </svg>
+                    d="M9 5l7 7-7 7"></path></svg
+                >
               </a>
             </div>
           </div>
         </div>
 
+        <!-- Chart Bar -->
         <div
-          class="w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6"
+          class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800"
         >
           <div
-            class="flex justify-between pb-4 mb-4 border-b border-gray-200 dark:border-gray-700"
+            class="items-center justify-between pb-4 border-b border-gray-200 sm:flex dark:border-gray-700"
           >
-            <div class="flex items-center">
-              <div
-                class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center me-3"
+            <div class="w-full mb-4 sm:mb-0">
+              <h3
+                class="text-base font-normal text-gray-500 dark:text-gray-400"
               >
-                <svg
-                  class="w-6 h-6 text-gray-500 dark:text-gray-400"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 20 19"
-                >
-                  <path
-                    d="M14.5 0A3.987 3.987 0 0 0 11 2.1a4.977 4.977 0 0 1 3.9 5.858A3.989 3.989 0 0 0 14.5 0ZM9 13h2a4 4 0 0 1 4 4v2H5v-2a4 4 0 0 1 4-4Z"
-                  ></path>
-                  <path
-                    d="M5 19h10v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2ZM5 7a5.008 5.008 0 0 1 4-4.9 3.988 3.988 0 1 0-3.9 5.859A4.974 4.974 0 0 1 5 7Zm5 3a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm5-1h-.424a5.016 5.016 0 0 1-1.942 2.232A6.007 6.007 0 0 1 17 17h2a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5ZM5.424 9H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h2a6.007 6.007 0 0 1 4.366-5.768A5.016 5.016 0 0 1 5.424 9Z"
-                  ></path>
-                </svg>
-              </div>
-              <div>
-                <h5
-                  class="leading-none text-2xl font-bold text-gray-900 dark:text-white pb-1"
-                >
-                  3.4k
-                </h5>
-                <p class="text-sm font-normal text-gray-500 dark:text-gray-400">
-                  Leads generated per week
-                </p>
-              </div>
-            </div>
-            <div>
+                Sales by category
+              </h3>
               <span
-                class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300"
+                class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white"
+                >Desktop PC</span
               >
-                <svg
-                  class="w-2.5 h-2.5 me-1.5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 14"
+              <p
+                class="flex items-center text-base font-normal text-gray-500 dark:text-gray-400"
+              >
+                <span
+                  class="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400"
                 >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M5 13V1m0 0L1 5m4-4 4 4"></path>
-                </svg>
-                42.5%
-              </span>
+                  <svg
+                    class="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z"
+                    ></path>
+                  </svg>
+                  2.5%
+                </span>
+                Since last month
+              </p>
+            </div>
+            <div class="w-full max-w-lg">
+              <div date-rangepicker class="grid items-center grid-cols-2 gap-4">
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                  >
+                    <svg
+                      class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M5.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H6a.75.75 0 01-.75-.75V12zM6 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H6zM7.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H8a.75.75 0 01-.75-.75V12zM8 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H8zM9.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V10zM10 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H10zM9.25 14a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V14zM12 9.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V10a.75.75 0 00-.75-.75H12zM11.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H12a.75.75 0 01-.75-.75V12zM12 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H12zM13.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H14a.75.75 0 01-.75-.75V10zM14 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H14z"
+                      ></path>
+                      <path
+                        clip-rule="evenodd"
+                        fill-rule="evenodd"
+                        d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <input
+                    name="start"
+                    type="text"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="From"
+                  />
+                </div>
+                <div class="relative">
+                  <div
+                    class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                  >
+                    <svg
+                      class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M5.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H6a.75.75 0 01-.75-.75V12zM6 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H6zM7.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H8a.75.75 0 01-.75-.75V12zM8 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H8zM9.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V10zM10 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H10zM9.25 14a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H10a.75.75 0 01-.75-.75V14zM12 9.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V10a.75.75 0 00-.75-.75H12zM11.25 12a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H12a.75.75 0 01-.75-.75V12zM12 13.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V14a.75.75 0 00-.75-.75H12zM13.25 10a.75.75 0 01.75-.75h.01a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75H14a.75.75 0 01-.75-.75V10zM14 11.25a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 00.75-.75V12a.75.75 0 00-.75-.75H14z"
+                      ></path>
+                      <path
+                        clip-rule="evenodd"
+                        fill-rule="evenodd"
+                        d="M5.75 2a.75.75 0 01.75.75V4h7V2.75a.75.75 0 011.5 0V4h.25A2.75 2.75 0 0118 6.75v8.5A2.75 2.75 0 0115.25 18H4.75A2.75 2.75 0 012 15.25v-8.5A2.75 2.75 0 014.75 4H5V2.75A.75.75 0 015.75 2zm-1 5.5c-.69 0-1.25.56-1.25 1.25v6.5c0 .69.56 1.25 1.25 1.25h10.5c.69 0 1.25-.56 1.25-1.25v-6.5c0-.69-.56-1.25-1.25-1.25H4.75z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <input
+                    name="end"
+                    type="text"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="To"
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="grid grid-cols-2">
-            <dl class="flex items-center">
-              <dt
-                class="text-gray-500 dark:text-gray-400 text-sm font-normal me-1"
-              >
-                Money spent:
-              </dt>
-              <dd class="text-gray-900 text-sm dark:text-white font-semibold">
-                $3,232
-              </dd>
-            </dl>
-            <dl class="flex items-center justify-end">
-              <dt
-                class="text-gray-500 dark:text-gray-400 text-sm font-normal me-1"
-              >
-                Conversion rate:
-              </dt>
-              <dd class="text-gray-900 text-sm dark:text-white font-semibold">
-                1.2%
-              </dd>
-            </dl>
-          </div>
+          <div id="sales-by-category"></div>
 
-          <div id="column-chart"></div>
           <div
-            class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between"
+            class="flex items-center justify-between pt-3 mt-4 border-t border-gray-200 sm:pt-6 dark:border-gray-700"
           >
-            <div class="flex justify-between items-center pt-5">
-              <!-- Button -->
+            <div>
               <button
-                id="dropdownDefaultButton"
-                data-dropdown-toggle="lastDaysdropdown"
-                data-dropdown-placement="bottom"
-                class="text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-900 text-center inline-flex items-center dark:hover:text-white"
+                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500 rounded-lg hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
                 type="button"
-              >
-                Last 7 days
-                <svg
-                  class="w-2.5 m-2.5 ms-1.5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
+                data-dropdown-toggle="sales-by-category-dropdown"
+                >Last 7 days <svg
+                  class="w-4 h-4 ml-2"
                   fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  ><path
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="m1 1 4 4 4-4"></path>
-                </svg>
-              </button>
-              <!-- Dropdown menu -->
-              <div
-                id="lastDaysdropdown"
-                class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                    d="M19 9l-7 7-7-7"></path></svg
+                ></button
               >
-                <ul
-                  class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                  aria-labelledby="dropdownDefaultButton"
-                >
+
+              <div
+                class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
+                id="sales-by-category-dropdown"
+              >
+                <div class="px-4 py-3" role="none">
+                  <p
+                    class="text-sm font-medium text-gray-900 truncate dark:text-white"
+                    role="none"
+                  >
+                    Sep 16, 2021 - Sep 22, 2021
+                  </p>
+                </div>
+                <ul class="py-1" role="none">
                   <li>
                     <a
                       href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Yesterday</a
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">Yesterday</a
                     >
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Today</a
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">Today</a
                     >
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Last 7 days</a
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">Last 7 days</a
                     >
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Last 30 days</a
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">Last 30 days</a
                     >
                   </li>
                   <li>
                     <a
                       href="#"
-                      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                      >Last 90 days</a
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                      role="menuitem">Last 90 days</a
                     >
                   </li>
                 </ul>
+                <div class="py-1" role="none">
+                  <a
+                    href="#"
+                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white"
+                    role="menuitem">Custom...</a
+                  >
+                </div>
               </div>
+            </div>
+            <div class="flex-shrink-0">
               <a
                 href="#"
-                class="uppercase text-sm font-semibold inline-flex items-center rounded-lg text-blue-600 hover:text-blue-700 dark:hover:text-blue-500 hover:bg-gray-100 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 px-3 py-2"
+                class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
               >
-                Leads Report
+                Sales Report
                 <svg
-                  class="w-2.5 h-2.5 ms-1.5 rtl:rotate-180"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
+                  class="w-4 h-4 ml-1"
                   fill="none"
-                  viewBox="0 0 6 10"
-                >
-                  <path
-                    stroke="currentColor"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  ><path
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="2"
-                    d="m1 9 4-4-4-4"></path>
-                </svg>
+                    d="M9 5l7 7-7 7"></path></svg
+                >
               </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart Donut -->
+        <div
+          class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800 2xl:col-span-1"
+        >
+          <div
+            class="flex items-center justify-between pb-4 mb-4 border-b border-gray-200 dark:border-gray-700"
+          >
+            <div>
+              <h3
+                class="text-base font-normal text-gray-500 dark:text-gray-400"
+              >
+                Traffic by device
+              </h3>
+              <span
+                class="text-2xl font-bold leading-none text-gray-900 sm:text-3xl dark:text-white"
+                >Desktop</span
+              >
+            </div>
+            <a
+              href="#"
+              class="inline-flex items-center p-2 text-xs font-medium uppercase rounded-lg text-primary-700 sm:text-sm hover:bg-gray-100 dark:text-primary-500 dark:hover:bg-gray-700"
+            >
+              Full report
+              <svg
+                class="w-4 h-4 ml-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                ><path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"></path></svg
+              >
+            </a>
+          </div>
+
+          <div id="traffic-by-device"></div>
+
+          <div
+            class="flex items-center justify-between pt-4 lg:justify-evenly sm:pt-6"
+          >
+            <div>
+              <svg
+                class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  d="M2 4.25A2.25 2.25 0 014.25 2h11.5A2.25 2.25 0 0118 4.25v8.5A2.25 2.25 0 0115.75 15h-3.105a3.501 3.501 0 001.1 1.677A.75.75 0 0113.26 18H6.74a.75.75 0 01-.484-1.323A3.501 3.501 0 007.355 15H4.25A2.25 2.25 0 012 12.75v-8.5zm1.5 0a.75.75 0 01.75-.75h11.5a.75.75 0 01.75.75v7.5a.75.75 0 01-.75.75H4.25a.75.75 0 01-.75-.75v-7.5z"
+                ></path>
+              </svg>
+              <h3 class="text-gray-500 dark:text-gray-400">Desktop</h3>
+              <h4 class="text-xl font-bold dark:text-white">234k</h4>
+              <p
+                class="flex items-center text-sm text-gray-500 dark:text-gray-400"
+              >
+                <span
+                  class="flex items-center mr-1.5 text-sm text-green-500 dark:text-green-400"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      d="M10 17a.75.75 0 01-.75-.75V5.612L5.29 9.77a.75.75 0 01-1.08-1.04l5.25-5.5a.75.75 0 011.08 0l5.25 5.5a.75.75 0 11-1.08 1.04l-3.96-4.158V16.25A.75.75 0 0110 17z"
+                    ></path>
+                  </svg>
+                  4%
+                </span>
+                vs last month
+              </p>
+            </div>
+            <div>
+              <svg
+                class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M8 16.25a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75z"
+                ></path>
+                <path
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  d="M4 4a3 3 0 013-3h6a3 3 0 013 3v12a3 3 0 01-3 3H7a3 3 0 01-3-3V4zm4-1.5v.75c0 .414.336.75.75.75h2.5a.75.75 0 00.75-.75V2.5h1A1.5 1.5 0 0114.5 4v12a1.5 1.5 0 01-1.5 1.5H7A1.5 1.5 0 015.5 16V4A1.5 1.5 0 017 2.5h1z"
+                ></path>
+              </svg>
+              <h3 class="text-gray-500 dark:text-gray-400">Phone</h3>
+              <h4 class="text-xl font-bold dark:text-white">94k</h4>
+              <p
+                class="flex items-center text-sm text-gray-500 dark:text-gray-400"
+              >
+                <span
+                  class="flex items-center mr-1.5 text-sm text-red-600 dark:text-red-500"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z"
+                    ></path>
+                  </svg>
+                  1%
+                </span>
+                vs last month
+              </p>
+            </div>
+            <div>
+              <svg
+                class="w-8 h-8 mb-1 text-gray-500 dark:text-gray-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  clip-rule="evenodd"
+                  fill-rule="evenodd"
+                  d="M5 1a3 3 0 00-3 3v12a3 3 0 003 3h10a3 3 0 003-3V4a3 3 0 00-3-3H5zM3.5 4A1.5 1.5 0 015 2.5h10A1.5 1.5 0 0116.5 4v12a1.5 1.5 0 01-1.5 1.5H5A1.5 1.5 0 013.5 16V4zm5.25 11.5a.75.75 0 000 1.5h2.5a.75.75 0 000-1.5h-2.5z"
+                ></path>
+              </svg>
+              <h3 class="text-gray-500 dark:text-gray-400">Tablet</h3>
+              <h4 class="text-xl font-bold dark:text-white">16k</h4>
+              <p
+                class="flex items-center text-sm text-gray-500 dark:text-gray-400"
+              >
+                <span
+                  class="flex items-center mr-1.5 text-sm text-red-600 dark:text-red-500"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      fill-rule="evenodd"
+                      d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z"
+                    ></path>
+                  </svg>
+                  0,6%
+                </span>
+                vs last month
+              </p>
             </div>
           </div>
         </div>
@@ -381,3 +529,7 @@ import Layout from "../layouts/Layout.astro";
     </Section>
   </Container>
 </Layout>
+
+<script>
+  import "@/modules/dashboard";
+</script>

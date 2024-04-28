@@ -1,0 +1,28 @@
+---
+import HamburguerButton from "./HamburguerButton.astro";
+import ToggleTheme from "./ToggleTheme.astro";
+import User from "./User.astro";
+---
+
+<nav
+  class="fixed z-50 w-full bg-slate-100 border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+>
+  <div class="px-3 py-3 lg:px-5 lg:pl-3">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center justify-start">
+        <HamburguerButton id="toggleSidebarMobileHamburger" />
+        <a href="/" class="flex ms-2 md:me-24">
+          <img src="/logo-logistic.png" class="h-8 me-3" alt="Logo Empresa" />
+          <span
+            class="self-center text-2xl font-bold whitespace-nowrap text-gray-900 dark:text-white"
+            >Nombre Empresa</span
+          >
+        </a>
+      </div>
+      <div class="flex items-center">
+        <ToggleTheme />
+        <User />
+      </div>
+    </div>
+  </div>
+</nav>

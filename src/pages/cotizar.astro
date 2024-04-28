@@ -1,47 +1,78 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Label from "../components/Label.astro";
-import Input from "../components/Input.astro";
+import Layout from "@/layouts/Layout.astro";
+import Label from "@/components/Label.astro";
 ---
 
-<Layout title="Cobox | Cotizar">
-  <div class="w-full min-h-screen py-24">
-    <div class="w-full flex justify-center items-center">
-      <form class="w-[80rem] lg:flex gap-x-4">
-        <div class="w-full mb-8 px-4">
-          <Label for="origin-address">Origen</Label>
-          <div>
-            <Input placeholder="Origen" />
-          </div>
-        </div>
-        <div class="w-full mb-8 px-4">
-          <Label for="destiny-address">Destino</Label>
-          <div>
-            <Input placeholder="Destino" />
-          </div>
-        </div>
-        <div class="w-full mb-8 px-4">
-          <label
-            for="countries"
-            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Selecciona tamaño del pedido</label
-          >
+<Layout title="Empresa | Cotizar">
+  <div class="h-screen flex items-center justify-center p-2">
+    <div
+      class="max-w-4xl mx-auto p-8 bg-slate-100 dark:bg-gray-800 shadow-lg rounded-lg"
+    >
+      <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold">COTIZADOR</h1>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div>
+          <Label>¿DÓNDE TE ENCUENTRAS?</Label>
           <select
-            id="countries"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-            focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
-            dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="block w-full border border-zinc-300 rounded py-2 px-3 mb-3 text-gray-500 dark:text-gray-40"
           >
-            <option>United States</option>
-            <option>Canada</option>
-            <option>France</option>
-            <option>Germany</option>
+            <option>Departamento</option>
+          </select>
+          <select
+            class="block w-full border border-zinc-300 rounded py-2 px-3 text-gray-500 dark:text-gray-40"
+          >
+            <option>Provincia</option>
           </select>
         </div>
-      </form>
-    </div>
-    <div class="flex justify-center mt-1 px-4">
-      <img src="https://placehold.co/1500x600" alt="" class="rounded-lg" />
+        <div>
+          <Label>¿A DÓNDE LO LLEVAMOS?</Label>
+          <select
+            class="block w-full border border-zinc-300 rounded py-2 px-3 mb-3 text-gray-500 dark:text-gray-40"
+          >
+            <option>Departamento</option>
+          </select>
+          <select
+            class="block w-full border border-zinc-300 rounded py-2 px-3 text-gray-500 dark:text-gray-40"
+          >
+            <option>Distrito</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-span-2">
+        <Label>¿CUÁNTO PESA?</Label>
+        <div class="flex">
+          <input
+            type="text"
+            class="block w-20 border border-zinc-300 rounded py-2 px-3 mr-3 text-gray-500 dark:text-gray-40"
+            value="1"
+          />
+          <select
+            class="block w-44 border border-zinc-300 rounded py-2 px-3 text-gray-500 dark:text-gray-40"
+          >
+            <option>Kilogramos (kg)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:flex justify-between items-center">
+        <div class="flex items-center">
+          <h2 class="text-lg font-bold mr-2">Precio estimado:</h2>
+          <span class="text-2xl font-bold">S/ 0.00</span>
+        </div>
+        <button
+          class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 mt-2 rounded"
+        >
+          COTIZAR
+        </button>
+      </div>
+
+      <p class="text-gray-900/70 dark:text-gray-50/50 text-sm mt-4">
+        Las tarifas son referenciales. Las tarifas incluyen IGV. Precios válidos
+        solo para el Servicio Regular de Lima a Provincias y de Lima a Lima.
+      </p>
     </div>
   </div>
 </Layout>

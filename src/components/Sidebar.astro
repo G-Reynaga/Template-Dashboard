@@ -1,0 +1,192 @@
+---
+import DashboardIcon from "@/icons/Dashboard.astro";
+import UsersIcon from "@/icons/Users.astro";
+import CargaMasivaIcon from "@/icons/Cargamasiva.astro";
+import OrdenesIcon from "@/icons/Ordenes.astro";
+import FormularioIcon from "@/icons/Formulario.astro";
+import SignOutIcon from "@/icons/Signout.astro";
+import MotobikerIcon from "@/icons/Motobiker.astro";
+---
+
+<aside
+  id="sidebar"
+  class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-slate-100 border-r border-gray-200 lg:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+  aria-label="Sidebar"
+>
+  <div class="h-full px-3 pb-4 overflow-y-auto bg-slate-100 dark:bg-gray-800">
+    <ul class="space-y-2 font-medium">
+      <p class="text-sm text-gray-900/70 dark:text-gray-50/50">
+        Administración
+      </p>
+      <li>
+        <a
+          href="/dashboard"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+        >
+          <DashboardIcon
+            class="text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+          />
+          <span class="ms-3">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="/users"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+        >
+          <UsersIcon
+            class="text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+          />
+          <span class="ms-3">Users</span>
+        </a>
+      </li>
+      <li>
+        <button
+          type="button"
+          class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+          aria-expanded="false"
+          aria-controls="dropdown-carga-masiva"
+          data-collapse-toggle="dropdown-carga-masiva"
+        >
+          <span class="sr-only">Open</span>
+          <CargaMasivaIcon
+            class="text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+            aria-hidden="true"
+          />
+          <span
+            class="flex-1 ml-3 text-left whitespace-nowrap"
+            sidebar-toggle-item>Carga Massiva</span
+          >
+          <svg
+            sidebar-toggle-item
+            class="w-6 h-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+            ><path
+              fill-rule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path></svg
+          >
+        </button>
+        <ul
+          id="dropdown-carga-masiva"
+          class="hidden space-y-2 py-2 transition-transform origin-top duration-300 transform-gpu scale-95 group-hover:scale-100"
+        >
+          <li>
+            <a
+              href="/cargaMasiva"
+              class="text-base text-gray-900 rounded-lg flex items-center p-2 group hover:bg-gray-100 transition duration-75 pl-11 dark:text-gray-200 dark:hover:bg-gray-700"
+              >Pedidos</a
+            >
+          </li>
+          <li>
+            <a
+              href="crud/users"
+              class="text-base text-gray-900 rounded-lg flex items-center p-2 group hover:bg-gray-100 transition duration-75 pl-11 dark:text-gray-200 dark:hover:bg-gray-700"
+              >Crear Pedido</a
+            >
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a
+          href="/ordenes"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+        >
+          <OrdenesIcon
+            class="text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+          />
+          <span class="ms-3">Ordenes</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="/logistica"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+        >
+          <MotobikerIcon
+            class="text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+          />
+          <span class="ms-3">Logistica</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href="/cotizar"
+          class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+        >
+          <FormularioIcon
+            class="text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+          />
+          <span class="ms-3">Cotizar</span>
+        </a>
+      </li>
+      <a
+        href="/login"
+        class="flex items-center p-2 absolute bottom-0 text-gray-900 rounded-lg dark:text-white group"
+      >
+        <SignOutIcon
+          class="text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+        />
+        <span class="ms-3">Cerrar Sesión</span>
+      </a>
+    </ul>
+  </div>
+</aside>
+
+<div
+  class="fixed inset-0 z-10 hidden bg-gray-900/50 dark:bg-gray-900/90"
+  id="sidebarBackdrop"
+>
+</div>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const sidebar = document.getElementById("sidebar");
+
+    if (sidebar) {
+      const toggleSidebarMobile = (
+        sidebar: HTMLElement,
+        sidebarBackdrop: HTMLElement,
+        toggleSidebarMobileHamburger: HTMLElement,
+        toggleSidebarMobileClose: HTMLElement
+      ) => {
+        sidebar.classList.toggle("-translate-x-full");
+        sidebarBackdrop.classList.toggle("hidden");
+        toggleSidebarMobileHamburger.classList.toggle("hidden");
+        toggleSidebarMobileClose.classList.toggle("hidden");
+      };
+
+      const toggleSidebarMobileEl = document.getElementById(
+        "toggleSidebarMobile"
+      );
+      const sidebarBackdrop = document.getElementById("sidebarBackdrop")!;
+
+      const toggleSidebarMobileHamburger = document.getElementById(
+        "toggleSidebarMobileHamburger"
+      )!;
+      const toggleSidebarMobileClose = document.getElementById(
+        "toggleSidebarMobileClose"
+      )!;
+
+      toggleSidebarMobileEl?.addEventListener("click", () => {
+        toggleSidebarMobile(
+          sidebar,
+          sidebarBackdrop,
+          toggleSidebarMobileHamburger,
+          toggleSidebarMobileClose
+        );
+      });
+
+      sidebarBackdrop?.addEventListener("click", () => {
+        toggleSidebarMobile(
+          sidebar,
+          sidebarBackdrop,
+          toggleSidebarMobileHamburger,
+          toggleSidebarMobileClose
+        );
+      });
+    }
+  });
+</script>
