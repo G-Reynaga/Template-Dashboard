@@ -1,6 +1,8 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+import "@fontsource-variable/onest";
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -8,44 +10,77 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+    <script>
+      document.addEventListener("astro:page-load", () => {
+        if (
+          localStorage.getItem("color-theme") === "dark" ||
+          (!("color-theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          document.documentElement.classList.toggle("dark");
+        }
+      });
+    </script>
+  </head>
+  <body class="relative text-black dark:text-white bg-gray-50 dark:bg-gray-900">
+    <slot />
+    <style is:global>
+      :root {
+        color-scheme: light dark;
+      }
+      html {
+        font-family: "Onest Variable", system-ui, sans-serif;
+      }
+
+      body {
+        color: rgba(17, 17, 17, 0.9);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      @supports selector(::-webkit-scrollbar) {
+        ::-webkit-scrollbar {
+          width: 10px;
+          border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          background-color: rgb(199, 199, 199);
+          border: 2px solid transparent;
+          background-clip: content-box;
+        }
+
+        ::-webkit-scrollbar-thumb:active {
+          background-color: #353535;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: #353535;
+        }
+
+        ::-webkit-scrollbar-corner {
+          background: #353535;
+        }
+      }
+    </style>
+    <script>
+      //reiniciar flowbite tras ViewTransitions
+      import "flowbite";
+      import 'flowbite/dist/datepicker.js';
+      import { initFlowbite } from "flowbite";
+      document.addEventListener("astro:page-load", () => {
+        initFlowbite();
+      });
+    </script>
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>
