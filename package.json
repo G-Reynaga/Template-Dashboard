@@ -5,8 +5,7 @@
   "dependencies": {
     "@astrojs/check": "0.5.10",
     "@astrojs/tailwind": "5.1.0",
-    "@fontsource-variable/onest": "^5.0.4",
-    "@midudev/tailwind-animations": "^0.0.7",
+    "@fontsource-variable/inter": "^5.0.18",
     "apexcharts": "3.49.0",
     "astro": "4.7.0",
     "flowbite": "2.3.0",
