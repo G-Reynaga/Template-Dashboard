@@ -1,7 +1,23 @@
 import ApexCharts from "apexcharts";
 
+interface MainChartColors {
+  borderColor: string;
+  labelColor: string;
+  opacityFrom: number;
+  opacityTo: number;
+}
+
+interface TrafficChannelsChartColors {
+  strokeColor: string;
+}
+
 const getMainChartOptions = () => {
-  let mainChartColors = {};
+  let mainChartColors: MainChartColors = {
+    borderColor: "",
+    labelColor: "",
+    opacityFrom: 0,
+    opacityTo: 0,
+  };
 
   if (document.documentElement.classList.contains("dark")) {
     mainChartColors = {
@@ -23,8 +39,8 @@ const getMainChartOptions = () => {
     chart: {
       height: 420,
       type: "area",
-      fontFamily: "Inter, sans-serif",
-      // foreColor: mainChartColors.labelColor,
+      fontFamily: "Inter Variable, sans-serif",
+      foreColor: mainChartColors.labelColor,
       toolbar: {
         show: false,
       },
@@ -33,8 +49,8 @@ const getMainChartOptions = () => {
       type: "gradient",
       gradient: {
         enabled: true,
-        // opacityFrom: mainChartColors.opacityFrom,
-        // opacityTo: mainChartColors.opacityTo,
+        opacityFrom: mainChartColors.opacityFrom,
+        opacityTo: mainChartColors.opacityTo,
       },
     },
     dataLabels: {
@@ -43,12 +59,12 @@ const getMainChartOptions = () => {
     tooltip: {
       style: {
         fontSize: "14px",
-        fontFamily: "Inter, sans-serif",
+        fontFamily: "Inter Variable, sans-serif",
       },
     },
     grid: {
       show: true,
-      // borderColor: mainChartColors.borderColor,
+      borderColor: mainChartColors.borderColor,
       strokeDashArray: 1,
       padding: {
         left: 35,
@@ -87,22 +103,22 @@ const getMainChartOptions = () => {
       ],
       labels: {
         style: {
-          // colors: [mainChartColors.labelColor],
+          colors: [mainChartColors.labelColor],
           fontSize: "14px",
-          fontWeight: 500,
+          fontWeight: 800,
         },
       },
       axisBorder: {
-        // color: mainChartColors.borderColor,
+        color: mainChartColors.borderColor,
       },
       axisTicks: {
-        // color: mainChartColors.borderColor,
+        color: mainChartColors.borderColor,
       },
       crosshairs: {
         show: true,
         position: "back",
         stroke: {
-          // color: mainChartColors.borderColor,
+          color: mainChartColors.borderColor,
           width: 1,
           dashArray: 10,
         },
@@ -111,21 +127,21 @@ const getMainChartOptions = () => {
     yaxis: {
       labels: {
         style: {
-          // colors: [mainChartColors.labelColor],
+          colors: [mainChartColors.labelColor],
           fontSize: "14px",
           fontWeight: 500,
         },
-        // formatter(value) {
-        //   return `$${value}`;
-        // },
+        formatter(value: any) {
+          return `$${value}`;
+        },
       },
     },
     legend: {
       fontSize: "14px",
       fontWeight: 500,
-      fontFamily: "Inter, sans-serif",
+      fontFamily: "Inter Variable, sans-serif",
       labels: {
-        // colors: [mainChartColors.labelColor],
+        colors: [mainChartColors.labelColor],
       },
       itemMargin: {
         horizontal: 10,
@@ -154,105 +170,14 @@ document.addEventListener("astro:page-load", () => {
     );
     chart.render();
 
-    // init again when toggling dark mode
     document.addEventListener("dark-mode", () => {
       chart.updateOptions(getMainChartOptions());
     });
   }
 });
 
-if (document.getElementById("new-products-chart")) {
-  const options = {
-    colors: ["#1A56DB", "#FDBA8C"],
-    series: [
-      {
-        name: "Quantity",
-        color: "#1A56DB",
-        data: [
-          { x: "01 Feb", y: 170 },
-          { x: "02 Feb", y: 180 },
-          { x: "03 Feb", y: 164 },
-          { x: "04 Feb", y: 145 },
-          { x: "05 Feb", y: 194 },
-          { x: "06 Feb", y: 170 },
-          { x: "07 Feb", y: 155 },
-        ],
-      },
-    ],
-    chart: {
-      type: "bar",
-      height: "140px",
-      fontFamily: "Inter, sans-serif",
-      foreColor: "#4B5563",
-      toolbar: {
-        show: false,
-      },
-    },
-    plotOptions: {
-      bar: {
-        columnWidth: "90%",
-        borderRadius: 3,
-      },
-    },
-    tooltip: {
-      shared: false,
-      intersect: false,
-      style: {
-        fontSize: "14px",
-        fontFamily: "Inter, sans-serif",
-      },
-    },
-    states: {
-      hover: {
-        filter: {
-          type: "darken",
-          value: 1,
-        },
-      },
-    },
-    stroke: {
-      show: true,
-      width: 5,
-      colors: ["transparent"],
-    },
-    grid: {
-      show: false,
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    legend: {
-      show: false,
-    },
-    xaxis: {
-      floating: false,
-      labels: {
-        show: false,
-      },
-      axisBorder: {
-        show: false,
-      },
-      axisTicks: {
-        show: false,
-      },
-    },
-    yaxis: {
-      show: false,
-    },
-    fill: {
-      opacity: 1,
-    },
-  };
-
-  const chart = new ApexCharts(
-    document.getElementById("new-products-chart"),
-    options
-  );
-  chart.render();
-}
-
-if (document.getElementById("sales-by-category")) {
-  const options = {
+const getSalesBYCategory = () => {
+  return {
     colors: ["#1A56DB", "#FDBA8C"],
     series: [
       {
@@ -298,7 +223,7 @@ if (document.getElementById("sales-by-category")) {
     chart: {
       type: "bar",
       height: "420px",
-      fontFamily: "Inter, sans-serif",
+      fontFamily: "Inter Variable, sans-serif",
       foreColor: "#4B5563",
       toolbar: {
         show: false,
@@ -315,7 +240,7 @@ if (document.getElementById("sales-by-category")) {
       intersect: false,
       style: {
         fontSize: "14px",
-        fontFamily: "Inter, sans-serif",
+        fontFamily: "Inter Variable, sans-serif",
       },
     },
     states: {
@@ -359,18 +284,26 @@ if (document.getElementById("sales-by-category")) {
       opacity: 1,
     },
   };
+};
 
-  document.addEventListener("astro:page-load", () => {
+document.addEventListener("astro:page-load", () => {
+  if (document.getElementById("sales-by-category")) {
     const chart = new ApexCharts(
       document.getElementById("sales-by-category"),
-      options
+      getSalesBYCategory()
     );
     chart.render();
-  });
-}
+
+    document.addEventListener("dark-mode", () => {
+      chart.updateOptions(getSalesBYCategory());
+    });
+  }
+});
 
 const getTrafficChannelsChartOptions = () => {
-  let trafficChannelsChartColors = {};
+  let trafficChannelsChartColors: TrafficChannelsChartColors = {
+    strokeColor: "",
+  };
 
   if (document.documentElement.classList.contains("dark")) {
     trafficChannelsChartColors = {
@@ -384,12 +317,12 @@ const getTrafficChannelsChartOptions = () => {
 
   return {
     series: [70, 5, 25],
-    labels: ["Desktop", "Tablet", "Phone"],
-    colors: ["#16BDCA", "#FDBA8C", "#1A56DB"],
+    labels: ["Atendidos", "Pendientes", "Rechazados"],
+    colors: ["#16BDCA", "#FDBA8C", "#A34343"],
     chart: {
       type: "donut",
       height: 400,
-      fontFamily: "Inter, sans-serif",
+      fontFamily: "Inter Variable, sans-serif",
       toolbar: {
         show: false,
       },
@@ -405,7 +338,7 @@ const getTrafficChannelsChartOptions = () => {
       },
     ],
     stroke: {
-    //   colors: [trafficChannelsChartColors.strokeColor],
+      colors: [trafficChannelsChartColors.strokeColor],
     },
     states: {
       hover: {
@@ -422,19 +355,19 @@ const getTrafficChannelsChartOptions = () => {
       inverseOrder: true,
       style: {
         fontSize: "14px",
-        fontFamily: "Inter, sans-serif",
+        fontFamily: "Inter Variable, sans-serif",
       },
       x: {
         show: true,
-        // formatter(_, { seriesIndex, w }) {
-        //   const label = w.config.labels[seriesIndex];
-        //   return label;
-        // },
+        formatter(_value: any, { seriesIndex, w }: any) {
+          const label = w.config.labels[seriesIndex];
+          return label;
+        },
       },
       y: {
-        // formatter(value) {
-        //   return `${value}%`;
-        // },
+        formatter(value: any) {
+          return `${value}%`;
+        },
       },
     },
     grid: {
@@ -457,7 +390,6 @@ document.addEventListener("astro:page-load", () => {
     );
     chart.render();
 
-    // init again when toggling dark mode
     document.addEventListener("dark-mode", () => {
       chart.updateOptions(getTrafficChannelsChartOptions());
     });
