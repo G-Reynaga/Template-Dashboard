@@ -21,8 +21,19 @@ const Pages = [
   },
   {
     name: "Usuarios",
-    href: "/user",
     icon: UsersIcon,
+    subitems: [
+      {
+        name: "Personal",
+        href: "/user",
+        icon: UsersIcon,
+      },
+      {
+        name: "Personal2",
+        href: "/user2",
+        icon: UsersIcon,
+      },
+    ],
   },
   {
     name: "Carga Masiva",
@@ -51,19 +62,64 @@ const Pages = [
 ---
 
 {
-  Pages.map(({ name, active, href, icon: Icon }, key) => (
+  Pages.map(({ name, active, href, icon: Icon, subitems }, key) => (
     <li>
-      <a
-        href={href}
-        class:list={[
-          "flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group",
-          { "bg-gray-500 bg-opacity-40": active },
-        ]}
-        id={`nav-link-${key}`}
-      >
-        <Icon class="text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white size-5" />
-        <span class="text-sm ms-2">{name}</span>
-      </a>
+      {subitems ? (
+        <div>
+          <button
+            type="button"
+            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"
+            aria-controls="dropdown-layouts"
+            data-collapse-toggle="dropdown-layouts"
+            aria-expanded="false"
+          >
+            <Icon class="text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white size-5" />
+            <span class="flex-1 text-sm ml-3 text-left whitespace-nowrap">{name}</span>
+
+            <svg
+              class="w-6 h-6"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+          <ul id="dropdown-layouts" class="hidden py-2 space-y-2 ml-4 mt-2">
+            {subitems.map((subitem, subkey) => (
+              <li class="animate-fade-in-down animate-duration-200">
+                <a
+                  href={subitem.href}
+                  class:list={[
+                    "flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group",
+                    { "bg-gray-500 bg-opacity-40": active },
+                  ]}
+                  id={`subnav-link-${key}-${subkey}`}
+                >
+                  <subitem.icon class="text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white size-5" />
+                  <span class="text-sm ms-2">{subitem.name}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <a
+          href={href}
+          class:list={[
+            "flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group",
+            { "bg-gray-500 bg-opacity-40": active },
+          ]}
+          id={`nav-link-${key}`}
+        >
+          <Icon class="text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white size-5" />
+          <span class="text-sm ms-2">{name}</span>
+        </a>
+      )}
     </li>
   ))
 }
