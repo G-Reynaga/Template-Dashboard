@@ -5,6 +5,7 @@ import CargaMasivaIcon from "@/icons/Cargamasiva.astro";
 import OrdenesIcon from "@/icons/Ordenes.astro";
 import MotobikerIcon from "@/icons/Motobiker.astro";
 import FormularioIcon from "@/icons/Formulario.astro";
+import ComunityIcom from "@/icons/Comunity.astro";
 
 const { pathname } = Astro.url;
 const normalizedPathName =
@@ -41,7 +42,7 @@ const Pages = [
     icon: CargaMasivaIcon,
   },
   {
-    name: "Ordenes",
+    name: "Registro de pedidos",
     href: "/ordenes",
     icon: OrdenesIcon,
   },
@@ -54,6 +55,11 @@ const Pages = [
     name: "Cotizador",
     href: "/cotizar",
     icon: FormularioIcon,
+  },
+  {
+    name: "Comunidad",
+    href: "/comunidad",
+    icon: ComunityIcom,
   },
 ].map((page) => ({
   ...page,
@@ -74,7 +80,9 @@ const Pages = [
             aria-expanded="false"
           >
             <Icon class="text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white size-5" />
-            <span class="flex-1 text-sm ml-3 text-left whitespace-nowrap">{name}</span>
+            <span class="flex-1 text-sm ml-3 text-left whitespace-nowrap">
+              {name}
+            </span>
 
             <svg
               class="w-6 h-6"

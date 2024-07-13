@@ -1,100 +1,130 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/Container.astro";
-import Label from "@/components/Label.astro";
 import Section from "@/components/Section.astro";
+import MailIcon from "@/icons/Mail.astro";
+import Hashtag from "@/icons/Hashtag.astro";
+import CheckIcon from "@/icons/Check.astro";
+import AhorroIcon from "@/icons/Ahorro.astro";
+import ClockIcon from '@/icons/Clock.astro';
+import CancelIcon from '@/icons/Cancel.astro';
 ---
 
 <Layout title="Empresa | Perfil">
   <Container>
-    <Section class="p-4">
-      <div
-        class="bg-slate-100 dark:bg-gray-800 text-white p-8 md:w-[80%] mx-auto rounded-2xl"
-      >
-        <div class="flex items-center space-x-4 mb-6">
-          <span class="text-2xl">👨🏼‍💻</span>
-          <h1 class="text-2xl font-semibold text-gray-900 dark:text-white">
-            Perfil - Detalles
+    <Section class="p-8">
+      <div class="md:w-[80%] mx-auto">
+        <div class="flex flex-col md:flex-row items-center gap-2 mb-4">
+          <h1 class="text-4xl font-bold dark:text-white text-gray-800">
+            Nombre Usuario
           </h1>
-        </div>
-        <div class="flex items-center space-x-4 mb-6">
-          <div
-            class="w-24 h-24 rounded-full overflow-hidden border-2 border-zinc-700"
+          <span
+            class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400"
           >
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-              alt="Profile picture"
-            />
-          </div>
-          <button class="text-red-500 hover:text-red-400">Remove</button>
+            Rol del personal
+          </span>
         </div>
-        <div class="space-y-6">
-          <div>
-            <Label>Nombres</Label>
-            <input
-              type="text"
-              value="Nombre"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-            />
-          </div>
-          <div>
-            <Label
-              class="block text-sm font-medium mb-1 text-gray-900 dark:text-white"
-              >Correo Electronico</Label
+        <div class="flex flex-col md:flex-row gap-4">
+          <div
+            class="flex flex-col items-center bg-slate-100 w-full md:w-4/12 min-h-[300px] dark:bg-gray-800 py-4 rounded-2xl shadow-lg"
+          >
+            <div
+              class="size-32 rounded-full overflow-hidden border-2 border-zinc-700 mb-6"
             >
-            <input
-              type="email"
-              value="correo@mail.com"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white cursor-no-drop color"
-              disabled
-            />
-            <p class="text-xs text-gray-900/70 dark:text-gray-50/50 mt-1">
-              Póngase en contacto con nosotros para cambiar su dirección de
-              correo electrónico
-            </p>
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <Label>País</Label>
-              <select
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-              >
-                <option>Perú</option>
-              </select>
-            </div>
-            <div>
-              <Label>Celular</Label>
-              <input
-                type="tel"
-                value="999 999 999"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                alt="Profile picture"
               />
             </div>
+            <div class="w-full px-4">
+              <div class="flex items-center gap-2 mb-4">
+                <MailIcon class="size-10 text-gray-500 dark:text-gray-400" />
+                <div class="flex flex-col">
+                  <label class="text-xl">usuario@gmail.com</label>
+                  <label class="text-gray-400">Email address</label>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 mb-4">
+                <Hashtag class="size-10 text-gray-500 dark:text-gray-400" />
+                <div class="flex flex-col">
+                  <label class="text-xl">@usuario</label>
+                  <label class="text-gray-400">Social Name</label>
+                </div>
+              </div>
+            </div>
           </div>
-          <div>
-            <Label>Comercio</Label>
-            <input
-              type="text"
-              placeholder="Envios Fast"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-            />
-          </div>
-          <div>
-            <Label>Biografía (opcional)</Label>
-            <textarea
-              placeholder="Descríbete..."
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-            ></textarea>
-            <p class="text-xs text-gray-900/70 dark:text-gray-50/50 mt-1">
-              0/200 characters
-            </p>
-          </div>
-        </div>
-        <div class="flex justify-end space-x-4 mt-6">
-          <button
-            class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700"
-            >Guardar Cambios</button
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-100 dark:bg-gray-800 p-4 md:p-8 rounded-2xl shadow-lg w-full"
           >
+            <div class="bg-slate-200 dark:bg-gray-900 p-4 rounded-2xl shadow-lg">
+              <div class="flex items-center gap-2">
+                <div>
+                  <CheckIcon class="text-green-400 size-12" />
+                </div>
+                <div
+                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                >
+                  200
+                  <div
+                    class="font-normal text-lg text-gray-700 dark:text-gray-400"
+                  >
+                    Pedidos Realizados
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-slate-200 dark:bg-gray-900 p-4 rounded-2xl shadow-lg">
+              <div class="flex items-center gap-2">
+                <div>
+                  <CancelIcon class="text-red-400 size-12" />
+                </div>
+                <div
+                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                >
+                  5
+                  <div
+                    class="font-normal text-lg text-gray-700 dark:text-gray-400"
+                  >
+                    Pedidos cancelados
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-slate-200 dark:bg-gray-900 p-4 rounded-2xl shadow-lg">
+              <div class="flex items-center gap-2">
+                <div>
+                  <AhorroIcon class="text-yellow-400 size-12" />
+                </div>
+                <div
+                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                >
+                  S/. 1,042
+                  <div
+                    class="font-normal text-lg text-gray-700 dark:text-gray-400"
+                  >
+                    Pagos acumulados
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-slate-200 dark:bg-gray-900 p-4 rounded-2xl shadow-lg">
+              <div class="flex items-center gap-2">
+                <div>
+                  <ClockIcon class="text-blue-400 size-12" />
+                </div>
+                <div
+                  class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+                >
+                  10
+                  <div
+                    class="font-normal text-lg text-gray-700 dark:text-gray-400"
+                  >
+                    Horas totales por viajes
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Section>
