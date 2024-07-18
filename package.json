@@ -5,8 +5,8 @@
   "dependencies": {
     "@astrojs/check": "0.5.10",
     "@astrojs/tailwind": "5.1.0",
-    "@fontsource-variable/inter": "^5.0.18",
-    "@midudev/tailwind-animations": "^0.0.7",
+    "@fontsource-variable/inter": "5.0.18",
+    "@midudev/tailwind-animations": "0.0.7",
     "apexcharts": "3.49.0",
     "astro": "4.7.0",
     "flowbite": "2.3.0",
@@ -21,7 +21,7 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "standard": "^17.1.0"
+    "standard": "17.1.0"
   },
   "eslintConfig": {
     "extends": "./node_modules/standard/eslintrc.json"
