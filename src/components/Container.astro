@@ -2,16 +2,21 @@
 import Header from "./Header.astro";
 import Sidebar from "./Sidebar.astro";
 import FooterSidebar from "./FooterSidebar.astro";
+
+const { pathname } = Astro.url;
+const normalizedPathName = pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+const pathsWithoutFooter = ["/logistica"]; // Lista de paths donde no quieres que aparezca el FooterSidebar
+const showFooter = !pathsWithoutFooter.includes(normalizedPathName);
 ---
 
 <Header />
 <Sidebar />
-<div class="flex pt-16 pb-20 overflow-hidden bg-gray-50 dark:bg-gray-900">
+<div class={`flex pt-16 overflow-hidden bg-gray-50 dark:bg-gray-900 ${showFooter ? 'pb-20' : ''}`}>
   <div
     id="main-content"
     class="relative w-full h-full overflow-y-auto bg-gray-50 lg:ml-52 dark:bg-gray-900"
   >
     <slot />
   </div>
-  <FooterSidebar  />
+  {showFooter && <FooterSidebar />}
 </div>
