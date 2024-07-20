@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Container from "@/components/Container.astro";
 import Section from "@/components/Section.astro";
-import InfoCards from "@/components/InfoCards.astro"
+import InfoCards from "@/components/InfoCards.astro";
 import LinearChart from "@/components/LinearChart.astro";
 import Top from "@/components/Top.astro";
 import DonutChart from "@/components/DonutChart.astro";
@@ -17,15 +17,12 @@ import Transaction from "@/components/Transaction.astro";
         <InfoCards />
       </div>
 
-      <div class="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
+      <section class="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
         <LinearChart />
         <Top />
-      </div>
-
-      <div class="grid gap-4 xl:grid-cols-2 2xl:grid-cols-3">
         <DonutChart />
         <BarChart />
-      </div>
+      </section>
 
       <Transaction />
     </Section>
